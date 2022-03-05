@@ -1,0 +1,54 @@
+- unknown chars should be marked with either '?' or '_' or '.'
+
+- Words should be displayed in a nice table
+
+- There should be nice grep like character highlighting
+
+
+                                Use Cases
+======================================================================================
+
+* I want to find an anagram of the given letters
+    -> Search for any word with these exact number of letters in there
+
+* I want to find an anagram of the given letters PLUS a certain number of randomness
+    -> e.x. I have "abc" and I know there are 2 more unknown values "??"
+    -> This would be the string "abc??"
+
+* I know the position of certain letters and have no idea what the other spaces are
+    -> e.x. The word IS "hello" and I know 'e' and 'o'
+    -> This would be the string "?e??o"
+
+* I know 0 or more characters in the string, and I know that certain characters are different than others
+    -> e.x. I have a substitution cipher and I'm given "rtyyo"
+    -> I know 'r' => 'h' and 't' => 'e', but I don't know the others, I just know I have a double and then single of something different
+    -> This would be the string "he112" which would differentiate between the two character groups
+    -> Knowing 0 of the letters, the string would be "12334"
+
+
+
+
+
+
+
+                            How to make the anagram solver
+===========================================================================================
+
+* The word needs to have the given characters in it
+* The word should have [0-n] of a specific character from the given input string
+
+* How to make sure a given letter is within a given word in regex?
+    -> "*z\w*" will return all words that contain AN 'z'
+
+* How to make sure a set of characters is contained within a given word
+    -> (?=\w*t)(?=\w*l)(?=\w*p)\w+
+    -> Where 't', 'l', 'p' are the set of characters
+
+* how to make sure a word has n of a given letter in it, in ANY position
+    -> (?=(?:\w*t\w*){3})\w+
+    -> Where I want exactly 3 't's in the given word
+
+* Search for a word of set length, that contains n of a given character
+    -> (?=(?:\w*l\w*){2})\w+{5}
+    -> Where the given char is 'l' and the length of the word is 5
+
