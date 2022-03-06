@@ -49,6 +49,20 @@
     -> Where I want exactly 3 't's in the given word
 
 * Search for a word of set length, that contains n of a given character
-    -> (?=(?:\w*l\w*){2})\w+{5}
-    -> Where the given char is 'l' and the length of the word is 5
+    -> ^ (?=\w{12}$) (?=(?:\w*l){5}).*
+    -> Where the given char is 'l' (5 repetitions) and the length of the word is 12
+
+* If I want an anagram of the word angel
+    -> I need a 5 letter word
+    -> I need it to contain ONE of each of the letters in angel
+    -> ^(?=\w{5}$)(?=(?:\w*a){1})(?=(?:\w*n){1})(?=(?:\w*g){1})(?=(?:\w*e){1})(?=(?:\w*l){1}).*
+
+* Now, given there is a couple letters i know, but I don't know the whole word
+    -> The example word is "soliloquy"
+    -> The example mask I have is "s_l_l____"
+    -> The length is 9
+    -> ^s.l.l....$
+
+* What if I know it should contain 2 l's and an s but I don't know where they go
+
 
